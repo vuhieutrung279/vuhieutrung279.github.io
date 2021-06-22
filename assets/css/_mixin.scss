@@ -1,0 +1,19 @@
+@mixin flex($content: flex-start, $item: stretch) {
+    display: flex;
+    justify-content: $content;
+    align-items: $item;
+}
+
+@mixin posFull($pos: absolute,
+    $top: initial,
+    $bottom: initial,
+    $left: initial,
+    $right: initial,
+    $zindex: 0) {
+    position: $pos;
+    top: $top;
+    bottom: $bottom;
+    left: $left;
+    right: $right;
+    z-index: $zindex;
+}

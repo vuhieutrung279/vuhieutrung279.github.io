@@ -10,10 +10,32 @@
 html {
     font-size: 62.5%;
 }
-.main {
-    position: relative;
-    min-height: 100vh;
+.footer {
+    // @include posFull($left:0 , $right: 0, $bottom: 2.4rem);
+    padding: 2.4rem 0;
     @include flex($content: center, $item: center);
+    &__title {
+        font-family: 'Montserrat', sans-serif;
+        color: $color__text-2;
+        font-size: 1.4rem;
+        padding: 0 1rem;
+        text-align: center;
+        .footer__name {
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+        a {
+            text-decoration: none;
+            color: currentColor;
+            font-family: 'Montserrat', sans-serif;
+            &:focus, &:hover {
+                color: $color__text-hover;
+            }
+        }
+    }
+}
+.page-404 {
+    position: relative;
     .header {
         @include posFull($left: 7.7rem, $top: 4rem);
         &__title {
@@ -27,6 +49,7 @@ html {
     }
     .content {
         padding: 0 6rem;
+        min-height: calc(100vh - 6.6rem);
         @include flex($content: space-between, $item: center);
         &__img {
             flex: 1;
@@ -97,23 +120,96 @@ html {
 
         }
     }
-    .footer {
-        @include posFull($left:0 , $right: 0, $bottom: 2.4rem);
-        @include flex($content: center, $item: center);
+}
+
+.team-page {
+    padding: 0 30rem;
+    @media (max-width: 1550px) {
+        padding: 0 20rem;
+    }
+    @media (max-width: 1300px) {
+        padding: 0 10rem;
+    }
+    @media (max-width: 1200px) {
+        padding: 0 3rem;
+    }
+    .header {
+        padding: 10rem 0;
+        @include flex($item: center);
+        
         &__title {
-            font-family: $fontTitle;
-            color: $color__text-2;
-            font-size: 1.4rem;
-            padding: 0 1rem;
-            text-align: center;
-            .footer__name {
+            font-family: $fontPT;
+            font-size: 3.6rem;
+            font-weight: 700;
+            flex: 1;
+        }
+        &__desc {
+            flex: 1;
+            
+            h3 {
+                font-family: $fontPoppin;
+                font-size: 1.8rem;
+                text-transform: uppercase;
                 font-weight: 600;
             }
-            a {
-                text-decoration: none;
-                color: currentColor;
-                &:focus, &:hover {
-                    color: $color__text-hover;
+            p {
+                font-family: $fontPoppin;
+                font-size: 1.8rem;
+                max-width: 44rem;
+            }
+        }
+        @media (max-width: 992px) {
+            flex-direction: column;
+            &__title {
+                margin-bottom: 3.8rem;
+            }
+        }
+    }
+    .members {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(30rem, 1fr));
+        grid-column-gap: 5rem;
+
+        .member {
+            @include flex($item: center);
+            flex-direction: column;
+            &__img {
+                position: relative;
+                margin-bottom: 1.5rem;
+                max-width: 23.8rem;
+                img {
+                    width: 100%;
+                }
+            }
+            &__pos {
+                @include posFull($top: 0, $right: -2rem);
+                font-family: $fontPT;
+                font-size: 1.2rem;
+                line-height: 1.6rem;
+                text-transform: uppercase;
+                text-orientation: mixed;
+                writing-mode: vertical-rl;
+            }
+            &__name {
+                font-family: $fontPoppin;
+                font-size: 1.8rem;
+                font-weight: 600;
+            }
+            &:nth-child(2), &:nth-child(5) {
+                margin-top: 10rem;
+            }
+        }
+        @media (max-width: 1200px) {
+            grid-template-columns: repeat(3, minmax(20rem, 1fr));
+        }
+        @media (max-width: 992px) {
+            grid-template-columns: repeat(2, minmax(auto, 1fr));
+            .member {
+                &:nth-child(5) {
+                    margin-top: 0;
+                }
+                &:nth-child(even)  {
+                    margin-top: 10rem;
                 }
             }
         }
